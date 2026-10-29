@@ -9,6 +9,13 @@ dist/
 *.egg-info/
 .eggs/
 
+# PyInstaller
+*.spec
+
+# 安装包输出
+installer/
+_test_install/
+
 # 虚拟环境
 .venv/
 venv/
