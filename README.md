@@ -27,7 +27,7 @@ python todo_app.py
 
 ```bash
 python -m pip install pyinstaller
-python -m PyInstaller --noconfirm --clean --onefile --windowed --icon icon.ico --name TodoList todo_app.py
+python -m PyInstaller --noconfirm --clean --onefile --windowed --icon icon.ico --add-data "icon.ico;." --name TodoList todo_app.py
 ```
 
 生成安装包（需要 [Inno Setup 6](https://jrsoftware.org/isinfo.php)）：

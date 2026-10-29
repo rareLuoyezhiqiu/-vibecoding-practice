@@ -1,6 +1,7 @@
 """待办清单 —— 桌面版（Python + Tkinter，无需浏览器、不占端口）"""
 
 import json
+import os
 import sys
 import uuid
 from datetime import date
@@ -21,6 +22,12 @@ DANGER = "#ef4444"
 FONT = "Microsoft YaHei UI"
 
 STORAGE = Path.home() / ".vibecoding_todos.json"
+
+
+def resource_path(name):
+    """兼容源码运行和 PyInstaller 打包后的资源路径。"""
+    base = getattr(sys, "_MEIPASS", os.path.dirname(os.path.abspath(__file__)))
+    return os.path.join(base, name)
 
 
 def enable_dpi_awareness():
@@ -377,6 +384,10 @@ class TodoApp:
 def main():
     enable_dpi_awareness()
     root = tk.Tk()
+    try:
+        root.iconbitmap(resource_path("icon.ico"))
+    except tk.TclError:
+        pass
     TodoApp(root)
 
     if "--smoke" in sys.argv:
